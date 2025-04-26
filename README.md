@@ -19,11 +19,6 @@ git clone https://github.com/cqunited/docker-image-sync.git
 cd docker-image-sync
 ```
 
-2. 添加执行权限：
-```bash
-chmod +x docker-image-sync.sh docker-compose-change-registry.sh
-```
-
 ## 使用方法
 
 ### docker-image-sync.sh
@@ -75,6 +70,27 @@ docker.elastic.co/elasticsearch/elasticsearch:8.14.3
 
 # 修改指定路径的 docker-compose.yml
 ./docker-compose-change-registry.sh -f /path/to/docker-compose.yml -r registry.example.com
+```
+
+### docker-get-compose-images.sh
+
+从 docker-compose.yml 文件中提取所有镜像清单。
+
+```bash
+./docker-get-compose-images.sh -f <docker-compose文件> -o <输出文件>
+```
+
+参数说明：
+- `-f, --file`: 指定 docker-compose.yml 文件路径（默认为当前目录下的 docker-compose.yml）
+- `-o, --output`: 指定输出文件路径（必需）
+
+示例：
+```bash
+# 从当前目录下的 docker-compose.yml 提取镜像清单
+./docker-get-compose-images.sh -o images.txt
+
+# 从指定路径的 docker-compose.yml 提取镜像清单
+./docker-get-compose-images.sh -f /path/to/docker-compose.yml -o images.txt
 ```
 
 ## 支持的镜像格式
